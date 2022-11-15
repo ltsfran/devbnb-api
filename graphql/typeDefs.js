@@ -14,11 +14,29 @@ const typeDefs = `#graphql
     icon: String!
   }
 
+  type AccessToken {
+    """
+    AccessToken
+    """
+    token: String!
+    """
+    Token to refresh accessToken and refreshToken
+    """
+    refreshToken: String!
+  }
+
   type Query {
     """
     Get menu paths
     """
     menuPaths: [Menu]!
+  }
+
+  type Mutation {
+    """
+    Refresh accessToken and refreshToken
+    """
+    refreshToken: AccessToken!
   }
 `
 
