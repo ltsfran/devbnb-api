@@ -1,15 +1,29 @@
 import { ApolloServer } from '@apollo/server'
-import { startStandaloneServer } from '@apollo/server/standalone'
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
+import { expressMiddleware } from '@apollo/server/express4'
+import express from 'express'
+import http from 'http'
+import cors from 'cors'
 import typeDefs from './graphql/typeDefs.js'
 import resolvers from './graphql/resolvers.js'
 
+const app = express()
+const httpServer = http.createServer(app)
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
 })
 
-const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 }
-})
+await server.start()
 
-console.log(`🚀  Server ready at: ${url}`)
+app.use(
+  '/graphql',
+  cors(),
+  express.json(),
+  expressMiddleware(server)
+)
+
+await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve))
+
+console.log('🚀  Started server!')
