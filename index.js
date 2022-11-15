@@ -1,5 +1,6 @@
 import { ApolloServer } from '@apollo/server'
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default'
 import { expressMiddleware } from '@apollo/server/express4'
 import express from 'express'
 import http from 'http'
@@ -12,7 +13,11 @@ const httpServer = http.createServer(app)
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
+  plugins: [
+    ApolloServerPluginLandingPageLocalDefault(),
+    ApolloServerPluginDrainHttpServer({ httpServer })
+  ],
+  introspection: true
 })
 
 await server.start()
