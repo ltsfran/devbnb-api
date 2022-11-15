@@ -26,7 +26,9 @@ app.use(
   '/graphql',
   cors(),
   express.json(),
-  expressMiddleware(server)
+  expressMiddleware(server, {
+    context: ({ req }) => ({ req })
+  })
 )
 
 await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve))
