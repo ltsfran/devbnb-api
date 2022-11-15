@@ -1,0 +1,32 @@
+{
+  "name": "devbnb-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ltsfran/devbnb-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ltsfran/devbnb-api/issues"
+  },
+  "homepage": "https://github.com/ltsfran/devbnb-api#readme",
+  "dependencies": {
+    "@apollo/server": "4.1.1",
+    "graphql": "16.6.0"
+  },
+  "devDependencies": {
+    "eslint": "8.27.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-n": "15.5.1",
+    "eslint-plugin-promise": "6.1.1"
+  }
+}
