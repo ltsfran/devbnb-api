@@ -1,17 +1,17 @@
 export const menuPaths = [
   {
-    title: 'Mi Perfil',
-    pathName: '/gestion/perfil',
+    title: 'Profile',
+    pathName: '/manage/profile',
     icon: 'user'
   },
   {
-    title: 'Mis avisos',
-    pathName: '/gestion/avisos-activos',
+    title: 'My ads',
+    pathName: '/manage/active-notices',
     icon: 'car'
   },
   {
-    title: 'Cerrar Sesión',
-    pathName: '/cuenta/logout',
+    title: 'Logout',
+    pathName: '/manage/logout',
     icon: 'logout'
   }
 ]
